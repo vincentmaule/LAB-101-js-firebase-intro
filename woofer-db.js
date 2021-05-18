@@ -15,35 +15,47 @@ const firebaseConfig = {
   measurementId: 'G-VWGXQZSGDE'
 }
 
+const woofcol = 'woof'
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 
 // CREATE a new woof in the database
+// Function at Line 32
 function createWoofInDatabase (woof) { // eslint-disable-line no-unused-vars
-    // TODO create a new document in the collection
+  // TODO create a new document in the collection
+  db.collection(woofcol).add({
+    created_at: woof.created_at,
+    text: woof.text
+  })
+}
 
-  }
-  
-  // READ from Firestore when woofs are added, modified, or removed
-  // Call one of the following functions for each changed document:
-  //  1. addWoofRow(<woofKey>, <woof>)
-  //  2. updateWoofRow(<woofKey>, <woof>)
-  //  3. deleteWoofRow(<woofKey>)
-  // Make sure to pass the correct parameters!
+// READ from Firestore when woofs are added, modified, or removed
+// Call one of the following functions for each changed document:
+//  1. addWoofRow(<woofKey>, <woof>)
+//  2. updateWoofRow(<woofKey>, <woof>)
+//  3. deleteWoofRow(<woofKey>)
+// Make sure to pass the correct parameters!
 function readWoofsInDatabase () {
-    // TODO read added, modified, and removed documents
+  // TODO read added, modified, and removed documents
 }
-  
-  // UPDATE the woof in the database
+
+// UPDATE the woof in the database
+// Function at Line 57
 function updateWoofInDatabase (woofKey, woofText) { // eslint-disable-line no-unused-vars
-    // TODO update the document in the collection
+// TODO update the document in the collection
+  db.collection(woofcol).set({
+    created_at: woofKey,
+    text: woofText
+  })
 }
-  
-  // DELETE the woof from the database
+
+// DELETE the woof from the database
+// Function at Line 90
 function deleteWoofFromDatabase (woofKey) { // eslint-disable-line no-unused-vars
-    // TODO delete the document from the collection
+  // TODO delete the document from the collection
+  db.collection(woofcol).doc(woofKey).delete()
 }
-  
-  // Load all of the data
+// Load all of the data
 readWoofsInDatabase()
